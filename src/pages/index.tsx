@@ -27,21 +27,21 @@ const features = [
 const solutions = [
   {
     name: 'Agentic Reasoning',
-    image: '/AlphaApollo/img/agentic_reasoning.jpg',
+    image: '/img/agentic_reasoning.jpg',
     description: 'Multi-turn agentic reasoning through an iterative cycle of model reasoning, tool execution, and environment feedback.',
-    link: '/AlphaApollo/multi-turn-agentic-reasoning',
+    link: '/multi-turn-agentic-reasoning',
   },
   {
     name: 'Agentic Learning',
-    image: '/AlphaApollo/img/agentic_learning.jpg',
+    image: '/img/agentic_learning.jpg',
     description: 'Stable agentic learning via turn-level optimization that decouples model generations and environmental feedback.',
-    link: '/AlphaApollo/multi-turn-agentic-learning',
+    link: '/multi-turn-agentic-learning',
   },
   {
     name: 'Agentic Evolution',
-    image: '/AlphaApollo/img/agentic_evolution.jpg',
+    image: '/img/agentic_evolution.jpg',
     description: 'Multi-round agentic evolution through a propose-judge-update evolutionary loop with long-term memory.',
-    link: '/AlphaApollo/multi-round-agentic-evolution',
+    link: '/multi-round-agentic-evolution',
   },
 ];
 

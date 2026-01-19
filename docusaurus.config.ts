@@ -12,7 +12,7 @@ const config: Config = {
   },
 
   url: 'https://alphaapollo.org',
-  baseUrl: '/AlphaApollo/',
+  baseUrl: '/',
 
   organizationName: 'tmlr-group', 
   projectName: 'AlphaApollo', 
