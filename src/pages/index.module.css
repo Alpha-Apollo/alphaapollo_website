@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.quickstart {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: var(--verl-section-padding, 4rem 0);
+}
+
+.quickstart h2 {
+  font-size: clamp(1.8rem, 1.4rem + 1vw, 2.2rem);
+  margin-bottom: 0.75rem;
+  color: var(--ifm-heading-color);
+}
+
+.quickstart h3 {
+  color: var(--ifm-heading-color);
+}
+
+.lead {
+  margin: 0 0 1.25rem 0;
+  color: var(--ifm-font-color-secondary);
+  line-height: 1.6;
+}
+
+.community {
+  display: grid;
+  gap: 1.5rem;
+  padding: var(--verl-section-padding, 4rem 0);
+  max-width: 1100px;
+  margin: 0 auto;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+@media (max-width: 900px) {
+  .community {
+    grid-template-columns: 1fr;
+  }
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.links a {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.ctaCard {
+  background: #fff;
+  border: 1px solid var(--verl-gray-200, #e5e7eb);
+  border-radius: var(--verl-border-radius, 12px);
+  padding: 1.5rem;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.1);
+}
+
+.ctaCard h4 {
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+  color: var(--ifm-heading-color);
+}
+
+.ctaCard p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--ifm-font-color-secondary);
+}
+
+:global([data-theme='dark']) .ctaCard {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-300);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme='dark']) .ctaCard h4 {
+  color: var(--ifm-heading-color);
+}
+
+:global([data-theme='dark']) .ctaCard p {
+  color: var(--ifm-font-color-secondary);
+}
