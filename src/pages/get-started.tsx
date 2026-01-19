@@ -7,8 +7,7 @@ export default function GetStartedPage() {
       <main className="container margin-vert--lg">
         <h1>Get Started</h1>
         <p>
-          Install, run your first example, and get familiar with AlphaApollo. For more details, see
-          the <Link to="/docs/intro">documentation</Link>.
+          Install, run your first example, and get familiar with AlphaApollo.
         </p>
         <h2>Installation</h2>
         <pre>
@@ -22,7 +21,7 @@ conda activate alphaapollo_v2`}
         <h2>Run a quick example</h2>
         <ol>
           <li>
-            <Link to="/docs/intro">Read the intro</Link>
+            Coming soon...
           </li>
         </ol>
       </main>
