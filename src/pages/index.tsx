@@ -1,6 +1,7 @@
 import EnvironmentShowcase from '@site/src/components/EnvironmentShowcase';
 import Hero from '@site/src/components/Hero';
 import InstallBox from '@site/src/components/InstallBox';
+import QuickStart from '@site/src/components/QuickStart';
 import Layout from '@theme/Layout';
 import { ReactNode } from 'react';
 import styles from './index.module.css';
@@ -99,6 +100,8 @@ export default function Home(): ReactNode {
             environments={solutions}
             background="gray"
           />
+
+          <QuickStart />
         </div>
       </main>
     </Layout>
