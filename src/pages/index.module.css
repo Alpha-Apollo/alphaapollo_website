@@ -4,6 +4,28 @@
   gap: 0;
 }
 
+.introSection {
+  padding: 3rem 0;
+}
+
+:global([data-theme='dark']) .introSection {
+  background: var(--ifm-background-surface-color);
+}
+
+.introSection .introContent {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.introContent p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--ifm-font-color-secondary);
+  margin: 0;
+  text-align: left;
+}
+
 .quickstart {
   max-width: 1050px;
   margin: 0 auto;

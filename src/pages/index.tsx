@@ -95,6 +95,17 @@ export default function Home(): ReactNode {
             secondaryButtonLink="https://github.com/tmlr-group/AlphaApollo"
           />
 
+          <section className={styles.introSection}>
+            <div className={styles.introContent}>
+              <p>
+                AlphaApollo is an agentic reasoning framework that integrates multiple models and tools to enable iterative, verifiable, and self-evolving reasoning.
+                It supports a wide range of agentic reasoning paradigms, including tool-integrated reasoning, agentic post-training (multi-turn SFT and reinforcement learning), and agentic self-evolution.
+                AlphaApollo incorporates multiple post-training algorithms such as PPO, GRPO, and DAPO, and provides dataset-backed agentic evaluation pipelines.
+                AlphaApollo also offers flexible and extensible agentic environments and tool-set configurations, allowing users to easily customize, extend, and scale agentic reasoning workflows.
+              </p>
+            </div>
+          </section>
+
           <EnvironmentShowcase
             title="Key Features"
             environments={solutions}

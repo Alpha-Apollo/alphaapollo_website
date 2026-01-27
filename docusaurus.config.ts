@@ -62,7 +62,7 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} AlphaApollo. Built with Docusaurus. All rights reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} AlphaApollo. Built with Docusaurus. All rights reserved. For technical issues, please submit an issue on <a href="https://github.com/tmlr-group/AlphaApollo/issues" target="_blank" rel="noopener noreferrer">GitHub</a>. </br>For questions and discussions, please contact Prof. Bo Han (<a href="mailto:bhanml@comp.hkbu.edu.hk">bhanml@comp.hkbu.edu.hk</a>) or Zhanke Zhou (<a href="mailto:cszkzhou@comp.hkbu.edu.hk">cszkzhou@comp.hkbu.edu.hk</a>).`,
     },
     prism: {
       theme: prismThemes.github,
