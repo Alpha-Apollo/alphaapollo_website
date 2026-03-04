@@ -17,22 +17,67 @@ bash installation.sh`;
 
 const demoExamples = [
   {
-    title: 'Agentic Reasoning (Tool)',
+    title: 'Agentic Reasoning',
     language: 'bash',
-    code: 'bash examples/generation/run_generation_informal_math_tool.sh',
+    code: `# Method 1: workflow entrypoint
+# no-tool reasoning
+python3 -m alphaapollo.workflows.test \\
+  --model.path=Qwen/Qwen2.5-3B-Instruct \\
+  --preprocess.data_source=math-ai/aime24
+
+# tool-integrated reasoning
+python3 -m alphaapollo.workflows.test \\
+  --model.path=Qwen/Qwen2.5-3B-Instruct \\
+  --preprocess.data_source=math-ai/aime24 \\
+  --env.informal_math.enable_python_code=true \\
+  --env.informal_math.enable_local_rag=false \\
+  --env.max_steps=4
+
+# Method 2: script entrypoint
+bash examples/test/run_test_informal_math_no_tool.sh # no-tool reasoning
+bash examples/test/run_test_informal_math.sh # tool-integrated reasoning`,
   },
   {
-    title: 'Agentic Learning (Multi-turn GRPO)',
+    title: 'Agentic Learning',
     language: 'bash',
-    code: 'bash examples/grpo/run_grpo_informal_math_tool.sh',
+    code: `# Method 1: workflow entrypoint
+# multi-turn SFT
+python3 -m alphaapollo.workflows.sft \\
+  --model.partial_pretrain=Qwen/Qwen2.5-3B-Instruct \\
+  --preprocess.data_source=AI-MO/NuminaMath-TIR
+
+# multi-turn RL
+python3 -m alphaapollo.workflows.rl \\
+  --model.path=Qwen/Qwen2.5-3B-Instruct \\
+  --preprocess.data_source=HuggingFaceH4/MATH-500 \\
+  --algorithm.adv_estimator=grpo
+
+# Method 2: script entrypoints
+bash examples/sft/run_sft_informal_math_no_tool.sh # vanilla SFT
+bash examples/sft/run_sft_informal_math_tool.sh # multi-turn SFT
+bash examples/rl/run_rl_informal_math_no_tool.sh # vanilla RL (estimator=grpo by default)
+bash examples/rl/run_rl_informal_math_tool.sh # multi-turn RL (estimator=grpo by default)`,
   },
   {
     title: 'Agentic Evolution',
     language: 'bash',
-    code: `# Before running the self-evolution scripts, make sure to serve the corresponding number of models.
-python utils/ray_serve_llm.py --model_path <model_path> --gpus <gpus> --port <port> --model_id <model_id>
+    code: `# Before running, serve models:
+python alphaapollo/utils/ray_serve_llm.py \\
+  --model_path Qwen/Qwen3-4B-Instruct-2507 \\
+  --gpus "0,1" \\
+  --model_id "qwen3_4b_inst"
 
-bash examples/evolving/run_vllm_informalmath_evolving.sh`,
+# Method 1: workflow entrypoint
+# single-model evolution
+python3 -m alphaapollo.workflows.evo \\
+  --preprocess.data_source=math-ai/aime24 \\
+  --run.dataset_name=aime24 \\
+  --policy_model_cfg.model_name=qwen3_4b_inst \\
+  --verifier_cfg.model_name=qwen3_4b_inst 
+
+# Method 2: script entrypoint
+bash examples/evo/run_evo_informal_math.sh # single-model evolution
+bash examples/evo/run_evo_informal_math_multi_models.sh # multi-model evolution`,
   },
 ];
 

@@ -129,3 +129,5 @@ outputs
 
 .docusaurus/
 node_modules/
+
+*.Identifier

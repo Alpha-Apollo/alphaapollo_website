@@ -3,7 +3,11 @@ import Hero from '@site/src/components/Hero';
 import InstallBox from '@site/src/components/InstallBox';
 import QuickStart from '@site/src/components/QuickStart';
 import Layout from '@theme/Layout';
-import { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 import styles from './index.module.css';
 
 
@@ -79,7 +83,27 @@ print(reasoning_traj)`,
   },
 ];
 
+const q1Text = "Every morning Aya goes for a 9-kilometer-long walk and stops at a coffee shop afterwards. When she walks at a constant speed of $s$ kilometers per hour, the walk takes her 4 hours, including $t$ minutes spent in the coffee shop. When she walks $s+2$ kilometers per hour, the walk takes her 2 hours and 24 minutes, including $t$ minutes spent in the coffee shop. Suppose Aya walks at $s+\\frac{1}{2}$ kilometers per hour. Find the number of minutes the walk takes her, including the $t$ minutes spent in the coffee shop.";
+const f1Text = "Could you write a short Python script using SymPy to solve the system of equations for $s$ and $t$, and then calculate the final answer in minutes?";
+
+const q2Text = "Jen enters a lottery by picking 4 distinct numbers from $S=\\{1, 2, 3, \\dots, 9, 10\\}$. 4 numbers are randomly chosen from $S$. She wins a prize if at least two of her numbers were of the randomly chosen numbers, and wins the grand prize if all four of her numbers were the randomly chosen numbers. The probability of her winning the grand prize given that she won a prize is $m/n$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.";
+const f2Text = "Could you write a Python script to simulate this lottery 100,000 times and verify if the empirical probability closely matches your analytical result?";
+
+const q3Text = "Find the largest possible real part of $(75+117i)z+\\frac{96+144i}{z}$ where $z$ is a complex number with $|z|=4$.";
+const f3Text = "Please write a Python program using `scipy.optimize` or a simple search over $\\theta \\in [0, 2\\pi]$ to numerically find the maximum real part of this expression and verify your analytical maximum.";
+
+const demoItems = [
+  { label: 'Question 1', text: q1Text, gif: '/img/demo_q1.gif' },
+  { label: 'Question 2', text: q2Text, gif: '/img/demo_q2.gif' },
+  { label: 'Question 3', text: q3Text, gif: '/img/demo_q3.gif' },
+  { label: 'Followup 1', text: f1Text, gif: '/img/demo_f1.gif' },
+  { label: 'Followup 2', text: f2Text, gif: '/img/demo_f2.gif' },
+  { label: 'Followup 3', text: f3Text, gif: '/img/demo_f3.gif' },
+];
+
 export default function Home(): ReactNode {
+  const [activeGif, setActiveGif] = useState<string | null>(null);
+
   return (
     <Layout
       title="AlphaApollo"
@@ -111,6 +135,41 @@ export default function Home(): ReactNode {
             environments={solutions}
             background="gray"
           />
+
+          <section className={styles.demoSection}>
+            <div className={styles.demoContent}>
+              <h2>Demo</h2>
+              <div className={styles.demoGrid}>
+                {demoItems.map((item, index) => (
+                  <div key={index} className={styles.demoItem}>
+                    <div className={styles.demoHeader}>
+                      <span className={styles.demoLabel}>{item.label}</span>
+                      <div className={styles.demoText}>
+                        <ReactMarkdown 
+                          remarkPlugins={[remarkMath]} 
+                          rehypePlugins={[rehypeKatex]}
+                        >
+                          {item.text}
+                        </ReactMarkdown>
+                      </div>
+                    </div>
+                    <div className={styles.gifWrapper} onClick={() => setActiveGif(item.gif)}>
+                      <img src={item.gif} alt={item.label} loading="lazy" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {activeGif && (
+            <div className={styles.modal} onClick={() => setActiveGif(null)}>
+              <div className={styles.modalContent}>
+                <button className={styles.closeButton} onClick={() => setActiveGif(null)}>&times;</button>
+                <img src={activeGif} alt="Enlarged Demo" />
+              </div>
+            </div>
+          )}
 
           <QuickStart />
         </div>

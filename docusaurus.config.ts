@@ -28,7 +28,21 @@ const config: Config = {
     [
       'classic',
       {
-        docs: false,
+        docs: {
+          sidebarPath: './sidebars.ts',
+          // Enable versioning
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'Latest',
+              path: '',
+            },
+          },
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            'https://github.com/tmlr-group/AlphaApollo',
+        },
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
@@ -54,9 +68,17 @@ const config: Config = {
         src: 'img/TMLR.png',
       },
       items: [
-        { to: '/multi-turn-agentic-reasoning', label: 'Agentic Reasoning', position: 'left' },
-        { to: '/multi-turn-agentic-learning', label: 'Agentic Learning', position: 'left' },
-        { to: '/multi-round-agentic-evolution', label: 'Agentic Evolution', position: 'left' },
+        {
+          type: 'dropdown',
+          label: 'Features',
+          position: 'left',
+          items: [
+            { to: '/multi-turn-agentic-reasoning', label: 'Agentic Reasoning' },
+            { to: '/multi-turn-agentic-learning', label: 'Agentic Learning' },
+            { to: '/multi-round-agentic-evolution', label: 'Agentic Evolution' },
+          ],
+        },
+        { to: '/docs/intro', label: 'Docs', position: 'left' },
         { href: 'https://github.com/tmlr-group/AlphaApollo', label: 'GitHub', position: 'right' },
       ],
     },
